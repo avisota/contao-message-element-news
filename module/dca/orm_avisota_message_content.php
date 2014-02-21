@@ -13,6 +13,7 @@
  * @filesource
  */
 
+use ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory;
 
 /**
  * Table orm_avisota_message_content
@@ -21,19 +22,48 @@
 $GLOBALS['TL_DCA']['orm_avisota_message_content']['metapalettes']['news'] = array
 (
 	'type'    => array('type', 'cell', 'headline'),
-	'include' => array('news'),
+	'include' => array('newsId', 'newsTemplate'),
 	'expert'  => array(':hide', 'cssID', 'space')
 );
 
-$GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['news'] = array
+$GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = array
 (
-	'label'     => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['news'],
+	'label'     => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsId'],
 	'exclude'   => true,
-	'inputType' => 'newschooser',
-	'eval'      => array('mandatory' => true),
+	'inputType' => 'selectri',
+	'eval'      => array(
+		'min'  => 1,
+		'data' => function () {
+				/** @var SelectriContaoTableDataFactory $data */
+				$data = SelectriContaoTableDataFactory::create();
+				$data->setItemTable('tl_news');
+				$data->getConfig()
+					->setItemLabelCallback(
+						SelectriLabelFormatter::create('%s (ID %s)', array('headline', 'id'))
+							->getCallback()
+					);
+				$data->getConfig()
+					->setItemSearchColumns(array('headline'));
+				$data->getConfig()
+					->setItemConditionExpr('tstamp > 0');
+				$data->getConfig()
+					->setItemOrderByExpr('date DESC, time DESC');
+				return $data;
+			},
+	),
 	'field'     => array(
+		'type'     => 'integer',
 		'nullable' => true,
-		'type'     => 'serialized',
-		'length'   => 65532,
-	)
+	),
+);
+$GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsTemplate'] = array
+(
+	'label'            => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsTemplate'],
+	'exclude'          => true,
+	'inputType'        => 'select',
+	'options_callback' => CreateOptionsEventCallbackFactory::createTemplateGroupCallback('news_'),
+	'field'            => array(
+		'type'     => 'string',
+		'nullable' => true,
+	),
 );

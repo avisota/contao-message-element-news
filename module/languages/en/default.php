@@ -8,18 +8,13 @@
  *
  * @copyright  bit3 UG 2013
  * @author     Tristan Lins <tristan.lins@bit3.de>
- * @package    avisota/contao-message-element-news
+ * @package    avisota/contao-core
  * @license    LGPL-3.0+
  * @filesource
  */
 
 
 /**
- * Message elements
+ * Mailing content elements
  */
-$GLOBALS['TL_MCE']['includes'][] = 'news';
-
-/**
- * Events
- */
-$GLOBALS['TL_EVENT_SUBSCRIBERS'][] = 'Avisota\Contao\Message\Element\News\DefaultRenderer';
+$GLOBALS['TL_LANG']['MCE']['news']    = array('News', 'Displays a news article.');
