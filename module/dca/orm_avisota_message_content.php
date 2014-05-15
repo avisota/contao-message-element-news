@@ -20,9 +20,10 @@
  */
 $GLOBALS['TL_DCA']['orm_avisota_message_content']['metapalettes']['news'] = array
 (
-	'type'    => array('type', 'cell', 'headline'),
-	'include' => array('newsId', 'newsTemplate'),
-	'expert'  => array(':hide', 'cssID', 'space')
+	'type'      => array('type', 'cell', 'headline'),
+	'include'   => array('newsId', 'newsTemplate'),
+	'expert'    => array(':hide', 'cssID', 'space'),
+	'published' => array('invisible'),
 );
 
 $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = array
@@ -33,22 +34,22 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = ar
 	'eval'      => array(
 		'min'  => 1,
 		'data' => function () {
-				/** @var SelectriContaoTableDataFactory $data */
-				$data = SelectriContaoTableDataFactory::create();
-				$data->setItemTable('tl_news');
-				$data->getConfig()
-					->setItemLabelCallback(
-						SelectriLabelFormatter::create('%s (ID %s)', array('headline', 'id'))
-							->getCallback()
-					);
-				$data->getConfig()
-					->setItemSearchColumns(array('headline'));
-				$data->getConfig()
-					->setItemConditionExpr('tstamp > 0');
-				$data->getConfig()
-					->setItemOrderByExpr('date DESC, time DESC');
-				return $data;
-			},
+			/** @var SelectriContaoTableDataFactory $data */
+			$data = SelectriContaoTableDataFactory::create();
+			$data->setItemTable('tl_news');
+			$data->getConfig()
+				->setItemLabelCallback(
+					SelectriLabelFormatter::create('%s (ID %s)', array('headline', 'id'))
+						->getCallback()
+				);
+			$data->getConfig()
+				->setItemSearchColumns(array('headline'));
+			$data->getConfig()
+				->setItemConditionExpr('tstamp > 0');
+			$data->getConfig()
+				->setItemOrderByExpr('date DESC, time DESC');
+			return $data;
+		},
 	),
 	'field'     => array(
 		'type'     => 'integer',
@@ -60,7 +61,9 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsTemplate'] = ar
 	'label'            => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsTemplate'],
 	'exclude'          => true,
 	'inputType'        => 'select',
-	'options_callback' => \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createTemplateGroupCallback('news_'),
+	'options_callback' => \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createTemplateGroupCallback(
+		'news_'
+	),
 	'field'            => array(
 		'type'     => 'string',
 		'nullable' => true,
