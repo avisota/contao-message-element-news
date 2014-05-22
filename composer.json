@@ -19,7 +19,8 @@
 		"forum":"https://community.contao.org/de/forumdisplay.php?121-Avisota",
 		"wiki":"http://de.contaowiki.org/Kategorie:Avisota",
 		"irc":"irc://irc.freenode.org/avisota",
-		"source":"https://github.com/avisota/contao-message-element-news"
+		"source":"https://github.com/avisota/contao-message-element-news",
+		"backboneit/contao-selectri": "~2.0"
 	},
 	"require":{
 		"php":">=5.3",
