@@ -13,8 +13,7 @@
  * @filesource
  */
 
-
 /**
  * Mailing content elements
  */
-$GLOBALS['TL_LANG']['MCE']['news']    = array('News', 'Displays a news article.');
+$GLOBALS['TL_LANG']['MCE']['news'] = array('News', 'Displays a news article.');

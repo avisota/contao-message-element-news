@@ -13,15 +13,14 @@
  * @filesource
  */
 
-
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsId'] = array(
-	'News',
-	'Please choose the news to include.'
+$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsId']       = array(
+    'News',
+    'Please choose the news to include.'
 );
 $GLOBALS['TL_LANG']['orm_avisota_message_content']['newsTemplate'] = array(
-	'Template',
-	'Please choose the news template.'
+    'Template',
+    'Please choose the news template.'
 );
