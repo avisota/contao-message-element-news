@@ -32,8 +32,8 @@
         "php": ">=5.3",
         "contao-community-alliance/composer-plugin": "~2.3",
         "contao/core": ">=2.11.11,<3.6",
-        "avisota/contao-message": "~2.0",
-        "avisota/contao-message-element-headline": "~2.0"
+        "avisota/contao-message": "3.0.x-dev",
+        "avisota/contao-message-element-headline": "3.0.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
@@ -43,19 +43,19 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Avisota\\Contao\\Message\\Element\\News": "src/"
         }
     },
     "extra": {
         "contao": {
             "sources": {
-                "module": "system/modules/avisota-message-element-news"
+                "contao": "system/modules/avisota-message-element-news"
             },
             "transifex": {
                 "project": "avisota-contao",
                 "prefix": "contao-message-element-news-",
-                "languages_cto": "module/languages",
+                "languages_cto": "contao/languages",
                 "languages_tx": ".tx"
             }
         },
