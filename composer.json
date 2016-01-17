@@ -44,7 +44,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Avisota\\Contao\\Message\\Element\\News": "src/"
+            "Avisota\\Contao\\Message\\Element\\News\\": "src/"
         }
     },
     "extra": {
