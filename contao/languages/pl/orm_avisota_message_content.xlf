@@ -1,0 +1,22 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:03:51+02:00" original="orm_avisota_message_content" source-language="en" target-language="pl">
+    <body>
+      <trans-unit id="orm_avisota_message_content.newsId.0">
+        <source>News</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_message_content.newsId.1">
+        <source>Please choose the news to include.</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_message_content.newsTemplate.0">
+        <source>Template</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_message_content.newsTemplate.1">
+        <source>Please choose the news template.</source>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
