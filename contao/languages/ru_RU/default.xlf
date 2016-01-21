@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:03:51+02:00" original="default" source-language="en" target-language="ru-RU">
+    <body>
+      <trans-unit id="MCE.news.0">
+        <source>News</source>
+        
+      </trans-unit>
+      <trans-unit id="MCE.news.1">
+        <source>Displays a news article.</source>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

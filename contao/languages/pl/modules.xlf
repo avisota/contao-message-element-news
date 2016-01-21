@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:03:51+02:00" original="modules" source-language="en" target-language="pl">
+    <body>
+      <trans-unit id="MOD.avisota-message-element-news.0">
+        <source>Avisota - Message element &quot;News&quot;</source>
+        
+      </trans-unit>
+      <trans-unit id="MOD.avisota-message-element-news.1">
+        <source>&quot;News&quot; message element for Avisota messages.</source>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
