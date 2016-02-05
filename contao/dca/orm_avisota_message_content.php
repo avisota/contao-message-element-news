@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsTemplate'] = ar
     'exclude'          => true,
     'inputType'        => 'select',
     'options_callback' =>
-        \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory
+        ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory
             ::createTemplateGroupCallback('news_'),
     'field'            => array(
         'type'     => 'string',
