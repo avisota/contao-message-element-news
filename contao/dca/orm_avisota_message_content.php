@@ -55,6 +55,7 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = ar
         'nullable' => true,
     ),
 );
+
 $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsTemplate'] = array
 (
     'label'            => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsTemplate'],
