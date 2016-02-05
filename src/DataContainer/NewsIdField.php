@@ -8,7 +8,7 @@
  *
  * @copyright  way.vision 2016
  * @author     Sven Baumann <baumann.sv@gmail.com>
- * @package    avisota/contao-message-element-article
+ * @package    avisota/contao-message-element-news
  * @license    LGPL-3.0+
  * @filesource
  */
