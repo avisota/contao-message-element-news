@@ -32,23 +32,7 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = ar
     'inputType' => 'selectri',
     'eval'      => array(
         'min'  => 1,
-        'data' => function () {
-            /** @var SelectriContaoTableDataFactory $data */
-            $data = SelectriContaoTableDataFactory::create();
-            $data->setItemTable('tl_news');
-            $data->getConfig()
-                ->setItemLabelCallback(
-                    SelectriLabelFormatter::create('%s (ID %s)', array('headline', 'id'))
-                        ->getCallback()
-                );
-            $data->getConfig()
-                ->setItemSearchColumns(array('headline'));
-            $data->getConfig()
-                ->setItemConditionExpr('tstamp > 0');
-            $data->getConfig()
-                ->setItemOrderByExpr('date DESC, time DESC');
-            return $data;
-        },
+        'data' => Avisota\Contao\Message\Element\News\DataContainer\NewsIdField::getDataForSelectri(),
     ),
     'field'     => array(
         'type'     => 'integer',
