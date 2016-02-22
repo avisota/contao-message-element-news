@@ -63,7 +63,6 @@ class DefaultRenderer implements EventSubscriberInterface
      * @return string
      * @internal param MessageContent $content
      * @internal param RecipientInterface $recipient
-     *
      */
     public function renderContent(RenderMessageContentEvent $event)
     {
