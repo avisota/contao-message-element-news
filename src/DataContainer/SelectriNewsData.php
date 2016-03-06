@@ -212,7 +212,7 @@ class SelectriNewsData implements \SelectriData
         $end->add(new \DateInterval('P1Y1M'));
 
         #$where = array('(date > ?)');
-        $where = array('published = ?');
+        $where = array('(published = ?)');
         $args  = array(1);
 
         if (count($searchKeywords)) {
