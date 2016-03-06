@@ -225,7 +225,7 @@ class SelectriNewsData implements \SelectriData
 
         $database = \Database::getInstance();
         $result   = $database
-            ->prepare(sprintf('SELECT * FROM tl_news WHERE %s ORDER BY date', implode('AND', $where)))
+            ->prepare(sprintf('SELECT * FROM tl_news WHERE %s ORDER BY date', implode(' AND ', $where)))
             ->execute($args);
         $nodes    = array();
 
