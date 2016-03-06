@@ -159,7 +159,7 @@ class SelectriNewsMonthNode implements \SelectriNode
      */
     public function getIcon()
     {
-        return 'system/modules/calendar/assets/icon.gif';
+        return 'system/modules/news/assets/icon.gif';
     }
 
     /**
