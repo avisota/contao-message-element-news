@@ -216,7 +216,7 @@ class SelectriNewsData implements \SelectriData
         $args  = array(1);
 
         if (count($searchKeywords)) {
-            $where[] = '(' . substr(str_repeat(' OR title LIKE ?', count($searchKeywords)), 4) . ')';
+            $where[] = '(' . substr(str_repeat(' OR headline LIKE ?', count($searchKeywords)), 4) . ')';
 
             foreach ($searchKeywords as $searchKeyword) {
                 $args[] = '%' . $searchKeyword . '%';
