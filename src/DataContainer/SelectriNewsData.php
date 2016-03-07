@@ -211,9 +211,8 @@ class SelectriNewsData implements \SelectriData
         $end = clone $begin;
         $end->add(new \DateInterval('P1Y1M'));
 
-        #$where = array('(date > ?)');
-        $where = array('(published = ?)');
-        $args  = array(1);
+        $where = array('(id > ?)');
+        $args  = array(0);
 
         if (count($searchKeywords)) {
             $where[] = '(' . substr(str_repeat(' OR headline LIKE ?', count($searchKeywords)), 4) . ')';
