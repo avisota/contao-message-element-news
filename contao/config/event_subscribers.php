@@ -13,8 +13,10 @@
  * @filesource
  */
 
+use Avisota\Contao\Message\Element\News\DataContainer\OptionsBuilder;
 use Avisota\Contao\Message\Element\News\DefaultRenderer;
 
 return array(
-    new DefaultRenderer()
+    new DefaultRenderer(),
+    new OptionsBuilder(),
 );
