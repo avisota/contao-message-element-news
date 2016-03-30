@@ -15,15 +15,12 @@
 
 namespace Avisota\Contao\Message\Element\News\DataContainer;
 
-use ContaoCommunityAlliance\Contao\Bindings\ContaoEvents;
-use ContaoCommunityAlliance\Contao\Bindings\Events\Image\GenerateHtmlEvent;
-use ContaoCommunityAlliance\UrlBuilder\UrlBuilder;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Hofff\Contao\Selectri\Model\Node;
 
 /**
  * Class SelectriNewsEventNode
  */
-class SelectriNewsEventNode implements \SelectriNode
+class SelectriNewsEventNode implements Node
 {
     /**
      * @var SelectriNewsData
@@ -119,93 +116,10 @@ class SelectriNewsEventNode implements \SelectriNode
      */
     public function getLabel()
     {
-        $label = $this->date->format(\Config::get('dateFormat'));
+        $monthNode = new SelectriNewsMonthNode($this->data, $this->getDate());
+        $monthNode->addNews(array($this));
 
-        if ($this->row['time']) {
-            $label .= ' ' . date('H:i', $this->row['time']);
-        }
-
-        $label .= ': ' . $this->row['headline'];
-        $label .= ' <span style="color: grey;">[' . \NewsArchiveModel::findByPk($this->row['pid'])->title . ']</span>';
-        $label .= $this->getInfo();
-
-        return $label;
-    }
-
-    protected function getInfo()
-    {
-        $info = '<div style="margin-left: 16px; padding-top: 6px">';
-        $info .= $this->getEditButton();
-        $info .= $this->getHeaderButton();
-        $info .= $this->getPublishedIcon();
-        $info .= '</div>';
-
-        return $info;
-    }
-
-    protected function getEditButton()
-    {
-        $urlBuilder = new UrlBuilder();
-        $urlBuilder->setPath('contao/main.php')
-            ->setQueryParameter('do', 'news')
-            ->setQueryParameter('table', 'tl_content')
-            ->setQueryParameter('id', $this->row['id'])
-            ->setQueryParameter('popup', 1)
-            ->setQueryParameter('rt', \RequestToken::get());
-
-        $button = '<a href="' . $urlBuilder->getUrl() . '" ' . $this->getOnClickOpenModalIFrame() . '>' . $this->getOperationImage('edit.gif') . '</a>';
-
-        return $button;
-    }
-
-    protected function getHeaderButton()
-    {
-        $urlBuilder = new UrlBuilder();
-        $urlBuilder->setPath('contao/main.php')
-            ->setQueryParameter('do', 'news')
-            ->setQueryParameter('table', 'tl_news')
-            ->setQueryParameter('act', 'edit')
-            ->setQueryParameter('id', $this->row['id'])
-            ->setQueryParameter('popup', 1)
-            ->setQueryParameter('rt', \RequestToken::get());
-
-        $button = '<a href="' . $urlBuilder->getUrl() . '" ' . $this->getOnClickOpenModalIFrame() . '>' . $this->getOperationImage('header.gif') . '</a>';
-
-        return $button;
-    }
-
-    protected function getPublishedIcon()
-    {
-        $icon = 'visible.gif';
-        if ($this->row['published'] < 1) {
-            $icon = 'invisible.gif';
-        }
-
-        return $this->getOperationImage($icon);
-    }
-
-    protected function getOperationImage($icon)
-    {
-        global $container;
-        /** @var EventDispatcher $eventDispatcher */
-        $eventDispatcher = $container['event-dispatcher'];
-
-        /** @var GenerateHtmlEvent $imageEvent */
-        $imageEvent = $eventDispatcher->dispatch(
-            ContaoEvents::IMAGE_GET_HTML,
-            new GenerateHtmlEvent(
-                $icon,
-                '',
-                'style="padding-left: 6px;"'
-            )
-        );
-
-        return $imageEvent->getHtml();
-    }
-
-    protected function getOnClickOpenModalIFrame()
-    {
-        return 'onclick="Backend.openModalIframe({\'width\':768,\'url\':this.href});return false"';
+        return $monthNode->getLabel();
     }
 
     /**

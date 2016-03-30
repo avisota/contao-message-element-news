@@ -15,20 +15,23 @@
 
 namespace Avisota\Contao\Message\Element\News\DataContainer;
 
-use SelectriWidget;
+use Hofff\Contao\Selectri\Exception\SelectriException;
+use Hofff\Contao\Selectri\Model\AbstractData;
+use Hofff\Contao\Selectri\Util\SearchUtil;
+use Hofff\Contao\Selectri\Widget;
 
 /**
  * Class SelectriNewsData
  */
-class SelectriNewsData implements \SelectriData
+class SelectriNewsData extends AbstractData
 {
     /**
-     * @var SelectriWidget
+     * @var Widget
      */
     protected $widget;
 
     /**
-     * @return SelectriWidget The widget this data belongs to
+     * @return Widget The widget this data belongs to
      */
     public function getWidget()
     {
@@ -36,7 +39,7 @@ class SelectriNewsData implements \SelectriData
     }
 
     /**
-     * @param SelectriWidget $widget
+     * @param Widget $widget
      *
      * @return static
      */
@@ -44,15 +47,6 @@ class SelectriNewsData implements \SelectriData
     {
         $this->widget = $widget;
         return $this;
-    }
-
-    /**
-     * @throws \Exception If this data instance is not configured correctly
-     * @return void
-     */
-    public function validate()
-    {
-        // no op, this data is always valid
     }
 
     /**
@@ -64,9 +58,9 @@ class SelectriNewsData implements \SelectriData
      *
      * @return array<string> The input array with all invalid values removed
      */
-    public function filter(array $selection)
+    public function filter(array $keys)
     {
-        return $selection;
+        return array_keys(iterator_to_array($this->getNodes($keys), true));
     }
 
     /**
@@ -204,6 +198,10 @@ class SelectriNewsData implements \SelectriData
      */
     protected function fetchNodes(array $searchKeywords = array())
     {
+        if (empty($searchKeywords)) {
+            return new \EmptyIterator;
+        }
+
         $begin = new \DateTime();
         $begin->setTime(0, 0, 0);
         $begin->sub(new \DateInterval('P1M'));
@@ -215,10 +213,18 @@ class SelectriNewsData implements \SelectriData
         $args  = array(0);
 
         if (count($searchKeywords)) {
-            $where[] = '(' . substr(str_repeat(' OR headline LIKE ?', count($searchKeywords)), 4) . ')';
+            if (is_numeric($searchKeywords[0])) {
+                $where = array('(id = ?)');
+                $args  = array($searchKeywords[0]);
+                unset($searchKeywords[0]);
+            }
 
-            foreach ($searchKeywords as $searchKeyword) {
-                $args[] = '%' . $searchKeyword . '%';
+            if (count($searchKeywords)) {
+                $where[] = '(' . substr(str_repeat(' OR headline LIKE ?', count($searchKeywords)), 4) . ')';
+
+                foreach ($searchKeywords as $searchKeyword) {
+                    $args[] = '%' . $searchKeyword . '%';
+                }
             }
         }
 
@@ -252,8 +258,8 @@ class SelectriNewsData implements \SelectriData
                 }
 
                 $recurrences--;
-            } while ($recurrences &&
-                $date->getTimestamp() < $end->getTimestamp());
+            } while ($recurrences
+                     && $date->getTimestamp() < $end->getTimestamp());
         }
 
         if ($generateFlat) {
@@ -268,5 +274,63 @@ class SelectriNewsData implements \SelectriData
         }
 
         return new \ArrayIterator($nodes);
+    }
+
+    /**
+     * Returns an iterator over nodes identified by the given primary
+     * keys.
+     *
+     * The returned nodes should NOT be traversed recursivly through the node's
+     * getChildrenIterator method.
+     *
+     * @param         array <string> $keys An array of primary key values in their
+     *                      string representation
+     * @param boolean $selectableOnly
+     *
+     * @return Iterator<Node> An iterator over the nodes identified by
+     *        the given primary keys
+     */
+    public function getNodes(array $keys, $selectableOnly = true)
+    {
+        return $this->fetchNodes($keys);
+    }
+
+    /**
+     * @throws SelectriException If this data instance is not configured correctly
+     * @return void
+     */
+    public function validate()
+    {
+        //no validation. this is always true
+    }
+
+    /**
+     * @see \Hofff\Contao\Selectri\Model\Data::isSearchable()
+     */
+    public function isSearchable()
+    {
+        return true;
+    }
+
+    /**
+     * @see \Hofff\Contao\Selectri\Model\Data::isBrowsable()
+     */
+    public function isBrowsable()
+    {
+        return true;
+    }
+
+    /**
+     * @see \Hofff\Contao\Selectri\Model\Data::search()
+     *
+     * @param string $query
+     * @param int    $limit
+     * @param int    $offset
+     *
+     * @return Iterator|\EmptyIterator|\Hofff\Contao\Selectri\Model\Iterator
+     */
+    public function search($query, $limit, $offset = 0)
+    {
+        return $this->getNodes(SearchUtil::parseKeywords($query));
     }
 }

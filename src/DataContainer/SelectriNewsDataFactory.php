@@ -15,18 +15,23 @@
 
 namespace Avisota\Contao\Message\Element\News\DataContainer;
 
+use Hofff\Contao\Selectri\Model\Flat\SQLListDataFactory;
+use Hofff\Contao\Selectri\Widget;
+
 /**
  * Class SelectriNewsDataFactory
  */
-class SelectriNewsDataFactory extends \SelectriAbstractDataFactory
+class SelectriNewsDataFactory extends SQLListDataFactory
 {
     /**
-     * @return \SelectriData A new data instance
+     * @param Widget $widget
+     *
+     * @return SelectriNewsData A new data instance
      */
-    public function createData()
+    public function createData(Widget $widget = null)
     {
         $data = new SelectriNewsData();
-        $data->setWidget($this->getWidget());
+        $data->setWidget($widget);
         return $data;
     }
 }
