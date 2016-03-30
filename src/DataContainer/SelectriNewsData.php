@@ -289,6 +289,7 @@ class SelectriNewsData extends AbstractData
      *
      * @return Iterator<Node> An iterator over the nodes identified by
      *        the given primary keys
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getNodes(array $keys, $selectableOnly = true)
     {
@@ -328,6 +329,7 @@ class SelectriNewsData extends AbstractData
      * @param int    $offset
      *
      * @return Iterator|\EmptyIterator|\Hofff\Contao\Selectri\Model\Iterator
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function search($query, $limit, $offset = 0)
     {
