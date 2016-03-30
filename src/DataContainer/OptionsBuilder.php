@@ -61,6 +61,8 @@ class OptionsBuilder implements EventSubscriberInterface
      * @param GetPropertyOptionsEvent $event
      * @param                         $name
      * @param EventDispatcher         $eventDispatcher
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * @SuppressWarnings(PHPMD.LongVariableName)
      */
     public function newsTemplateOptions(GetPropertyOptionsEvent $event, $name, EventDispatcher $eventDispatcher)
     {
