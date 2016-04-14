@@ -60,7 +60,15 @@ class SelectriNewsData extends AbstractData
      */
     public function filter(array $keys)
     {
-        return array_keys(iterator_to_array($this->getNodes($keys), true));
+        $data = array();
+        foreach ($keys as $key) {
+            $key = explode('@', $key);
+            if (!in_array($key[0], $data)) {
+                $data[] = $key[0];
+            }
+        }
+
+        return $keys;
     }
 
     /**
