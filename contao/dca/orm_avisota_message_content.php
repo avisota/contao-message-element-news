@@ -32,10 +32,11 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = ar
     'inputType' => 'selectri',
     'eval'      => array(
         'min'  => 1,
+        'max'  => 99,
         'data' => 'Avisota\Contao\Message\Element\News\DataContainer\SelectriNewsDataFactory',
     ),
     'field'     => array(
-        'type'     => 'integer',
+        'type'     => 'array',
         'nullable' => true,
     ),
 );
