@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = ar
     'eval'      => array(
         'min'  => 1,
         'max'  => 99,
-        'data' => 'Avisota\Contao\Message\Element\News\DataContainer\SelectriNewsDataFactory',
+        'data' => 'Avisota\Contao\Message\Element\News\DataContainer\NewsListDataFactory',
     ),
     'field'     => array(
         'type'     => 'array',
