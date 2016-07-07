@@ -59,11 +59,11 @@ class OptionsBuilder implements EventSubscriberInterface
 
     /**
      * Get the options for news templates.
-     * 
+     *
      * @param GetPropertyOptionsEvent $event
      * @param                         $name
      * @param EventDispatcher         $eventDispatcher
-     * 
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @SuppressWarnings(PHPMD.LongVariableName)
      */
