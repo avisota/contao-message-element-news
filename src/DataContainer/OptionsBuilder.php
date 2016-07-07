@@ -8,7 +8,7 @@
  *
  * @copyright  way.vision 2016
  * @author     Sven Baumann <baumann.sv@gmail.com>
- * @package    avisota/contao-message-element-event
+ * @package    avisota/contao-message-element-news
  * @license    LGPL-3.0+
  * @filesource
  */
@@ -58,9 +58,12 @@ class OptionsBuilder implements EventSubscriberInterface
     }
 
     /**
+     * Get the options for news templates.
+     * 
      * @param GetPropertyOptionsEvent $event
      * @param                         $name
      * @param EventDispatcher         $eventDispatcher
+     * 
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @SuppressWarnings(PHPMD.LongVariableName)
      */
@@ -78,7 +81,7 @@ class OptionsBuilder implements EventSubscriberInterface
 
         $getTemplateGroupEvent = new GetTemplateGroupEvent('news_');
         $eventDispatcher->dispatch(ContaoEvents::CONTROLLER_GET_TEMPLATE_GROUP, $getTemplateGroupEvent);
-        $options =  $getTemplateGroupEvent->getTemplates()->getArrayCopy();
+        $options = $getTemplateGroupEvent->getTemplates()->getArrayCopy();
 
         /** @var MessageContent $messageContent */
         $messageContent = $event->getModel()->getEntity();

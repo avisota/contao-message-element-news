@@ -16,7 +16,6 @@
 namespace Avisota\Contao\Message\Element\News;
 
 use Avisota\Contao\Core\Message\Renderer;
-use Avisota\Contao\Entity\MessageContent;
 use Avisota\Contao\Message\Core\Event\AvisotaMessageEvents;
 use Avisota\Contao\Message\Core\Event\RenderMessageContentEvent;
 use Contao\Doctrine\ORM\Entity;
@@ -59,13 +58,11 @@ class DefaultRenderer implements EventSubscriberInterface
     }
 
     /**
-     * Render a single message content element.
+     * Render a multiple message content element.
      *
      * @param RenderMessageContentEvent $event
      *
      * @return string
-     * @internal param MessageContent $content
-     * @internal param RecipientInterface $recipient
      */
     public function renderContent(RenderMessageContentEvent $event)
     {
