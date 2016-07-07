@@ -41,6 +41,10 @@ class NewsYearListData extends AbstractData
 {
     use DatabaseTrait;
 
+    const SEARCH_ABLE = false;
+
+    const BROWSE_ABLE = true;
+
     /**
      * NewsYearListData constructor.
      *
@@ -143,7 +147,7 @@ class NewsYearListData extends AbstractData
     {
         return array(
             __CLASS__,
-            'getNewsArchiveIconCallback'
+            'prepareNewsArchiveYearIconCallback'
         );
     }
 
@@ -152,7 +156,7 @@ class NewsYearListData extends AbstractData
      *
      * @return string
      */
-    public function prepareNewsArchiveIconCallback()
+    public function prepareNewsArchiveYearIconCallback()
     {
         $user = BackendUser::getInstance();
 
@@ -211,7 +215,7 @@ class NewsYearListData extends AbstractData
      */
     public function isSearchable()
     {
-        return false;
+        return NewsYearListData::SEARCH_ABLE;
     }
 
     /**
@@ -219,6 +223,6 @@ class NewsYearListData extends AbstractData
      */
     public function isBrowsable()
     {
-        return true;
+        return NewsYearListData::BROWSE_ABLE;
     }
 }

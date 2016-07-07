@@ -40,6 +40,10 @@ class NewsMonthListData extends AbstractData
 {
     use DatabaseTrait;
 
+    const SEARCH_ABLE = false;
+
+    const BROWSE_ABLE = true;
+
     /**
      * NewsYearListData constructor.
      *
@@ -173,7 +177,7 @@ class NewsMonthListData extends AbstractData
     {
         return array(
             __CLASS__,
-            'prepareNewsArchiveIconCallback'
+            'prepareNewsArchiveMonthIconCallback'
         );
     }
 
@@ -182,7 +186,7 @@ class NewsMonthListData extends AbstractData
      *
      * @return string
      */
-    public function prepareNewsArchiveIconCallback()
+    public function prepareNewsArchiveMonthIconCallback()
     {
         $user = BackendUser::getInstance();
 
@@ -241,7 +245,7 @@ class NewsMonthListData extends AbstractData
      */
     public function isSearchable()
     {
-        return false;
+        return NewsMonthListData::SEARCH_ABLE;
     }
 
     /**
@@ -249,6 +253,6 @@ class NewsMonthListData extends AbstractData
      */
     public function isBrowsable()
     {
-        return true;
+        return NewsMonthListData::BROWSE_ABLE;
     }
 }

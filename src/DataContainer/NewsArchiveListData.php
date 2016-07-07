@@ -41,6 +41,10 @@ use Iterator;
 class NewsArchiveListData extends AbstractData
 {
     use DatabaseTrait;
+    
+    const SEARCH_ABLE = false;
+    
+    const BROWSE_ABLE = true;
 
     /**
      * NewsArchiveListData constructor.
@@ -276,7 +280,7 @@ class NewsArchiveListData extends AbstractData
      */
     public function isSearchable()
     {
-        return false;
+        return NewsArchiveListData::SEARCH_ABLE;
     }
 
     /**
@@ -284,6 +288,6 @@ class NewsArchiveListData extends AbstractData
      */
     public function isBrowsable()
     {
-        return true;
+        return NewsArchiveListData::BROWSE_ABLE;
     }
 }

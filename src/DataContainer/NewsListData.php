@@ -44,6 +44,10 @@ class NewsListData extends AbstractData
 {
     use DatabaseTrait;
 
+    const SEARCH_ABLE = false;
+
+    const BROWSE_ABLE = true;
+
     /**
      * NewsYearListData constructor.
      *
@@ -469,7 +473,7 @@ class NewsListData extends AbstractData
      */
     public function isSearchable()
     {
-        return false;
+        return NewsListData::SEARCH_ABLE;
     }
 
     /**
@@ -477,6 +481,6 @@ class NewsListData extends AbstractData
      */
     public function isBrowsable()
     {
-        return true;
+        return NewsListData::BROWSE_ABLE;
     }
 }
