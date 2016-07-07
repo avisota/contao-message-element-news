@@ -64,6 +64,8 @@ class NewsYearListData extends AbstractData
      * @param null $chunks
      *
      * @return array
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     public function browseFrom($chunks = null)
     {
@@ -190,6 +192,8 @@ class NewsYearListData extends AbstractData
      *
      * @return Iterator<Node> An iterator over the nodes identified by
      *        the given primary keys
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getNodes(array $keys, $selectableOnly = true)
     {
@@ -204,6 +208,8 @@ class NewsYearListData extends AbstractData
      *              string representation
      *
      * @return array<string> The input array with all invalid values removed
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function filter(array $keys)
     {

@@ -41,9 +41,9 @@ use Iterator;
 class NewsArchiveListData extends AbstractData
 {
     use DatabaseTrait;
-    
+
     const SEARCH_ABLE = false;
-    
+
     const BROWSE_ABLE = true;
 
     /**
@@ -255,6 +255,8 @@ class NewsArchiveListData extends AbstractData
      *
      * @return Iterator<Node> An iterator over the nodes identified by
      *        the given primary keys
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getNodes(array $keys, $selectableOnly = true)
     {
@@ -269,6 +271,8 @@ class NewsArchiveListData extends AbstractData
      *              string representation
      *
      * @return array<string> The input array with all invalid values removed
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function filter(array $keys)
     {

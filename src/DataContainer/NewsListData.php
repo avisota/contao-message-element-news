@@ -67,6 +67,8 @@ class NewsListData extends AbstractData
      * @param null $chunks
      *
      * @return array
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     public function browseFrom($chunks = null)
     {
