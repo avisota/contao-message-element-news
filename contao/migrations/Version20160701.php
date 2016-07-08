@@ -8,7 +8,7 @@
  *
  * @copyright  way.vision 2016
  * @author     Sven Baumann <baumann.sv@gmail.com>
- * @package    avisota/contao-message-element-article
+ * @package    avisota/contao-message-element-news
  * @license    LGPL-3.0+
  * @filesource
  */
@@ -26,7 +26,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Class Version20160701
  *
- * @package DoctrineMigrations\AvisotaMessageAnalyticsGa
+ * @package DoctrineMigrations\AvisotaMessageElementNews
  */
 class Version20160701 extends AbstractMigration
 {
