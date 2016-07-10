@@ -16,7 +16,6 @@
 namespace Avisota\Contao\Message\Element\News;
 
 use Avisota\Contao\Core\Message\Renderer;
-use Avisota\Contao\Entity\MessageContent;
 use Avisota\Contao\Message\Core\Event\AvisotaMessageEvents;
 use Avisota\Contao\Message\Core\Event\RenderMessageContentEvent;
 use Contao\Doctrine\ORM\Entity;
@@ -59,13 +58,11 @@ class DefaultRenderer implements EventSubscriberInterface
     }
 
     /**
-     * Render a single message content element.
+     * Render a multiple message content element.
      *
      * @param RenderMessageContentEvent $event
      *
      * @return string
-     * @internal param MessageContent $content
-     * @internal param RecipientInterface $recipient
      */
     public function renderContent(RenderMessageContentEvent $event)
     {
@@ -80,20 +77,28 @@ class DefaultRenderer implements EventSubscriberInterface
         /** @var EntityAccessor $entityAccessor */
         $entityAccessor = $container['doctrine.orm.entityAccessor'];
 
-        $getNewsEvent = new GetNewsEvent(
-            $content->getNewsId(),
-            $content->getNewsTemplate()
-        );
+        $contexts = array();
+        foreach ($content->getNewsId() as $elementId) {
+            $getNewsEvent = new GetNewsEvent(
+                $elementId,
+                $content->getNewsTemplate()
+            );
 
-        /** @var EventDispatcher $eventDispatcher */
-        $eventDispatcher = $container['event-dispatcher'];
-        $eventDispatcher->dispatch(ContaoEvents::NEWS_GET_NEWS, $getNewsEvent);
+            /** @var EventDispatcher $eventDispatcher */
+            $eventDispatcher = $container['event-dispatcher'];
+            $eventDispatcher->dispatch(ContaoEvents::NEWS_GET_NEWS, $getNewsEvent);
 
-        $context         = $entityAccessor->getProperties($content);
-        $context['news'] = $getNewsEvent->getNewsHtml();
+            $context         = $entityAccessor->getProperties($content);
+            $context['news'] = $getNewsEvent->getNewsHtml();
 
-        $template = new \TwigTemplate('avisota/message/renderer/default/mce_news', 'html');
-        $buffer   = $template->parse($context);
+            array_push($contexts, $context);
+        }
+
+        $buffer = '';
+        foreach ($contexts as $context) {
+            $template = new \TwigTemplate('avisota/message/renderer/default/mce_news', 'html');
+            $buffer .= $template->parse($context);
+        }
 
         $event->setRenderedContent($buffer);
     }
