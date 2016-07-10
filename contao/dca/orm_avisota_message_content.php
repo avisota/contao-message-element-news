@@ -29,13 +29,14 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = ar
 (
     'label'     => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsId'],
     'exclude'   => true,
-    'inputType' => 'selectri',
+    'inputType' => 'avisotaSelectriWithItems',
     'eval'      => array(
         'min'  => 1,
-        'data' => 'Avisota\Contao\Message\Element\News\DataContainer\SelectriNewsDataFactory',
+        'max'  => 99,
+        'data' => 'Avisota\Contao\Message\Element\News\DataContainer\NewsListDataFactory',
     ),
     'field'     => array(
-        'type'     => 'integer',
+        'type'     => 'array',
         'nullable' => true,
     ),
 );
