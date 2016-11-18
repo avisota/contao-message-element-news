@@ -119,7 +119,7 @@ class NewsController extends SQLListData
      */
     public function getNodes(array $keys, $selectableOnly = true)
     {
-        $newsList = new NewsListData($this->getWidget()->getData(), Database::getInstance());
+        $newsList = new NewsListData($this->getWidget(), Database::getInstance());
 
         return $newsList->getNodes($keys, $selectableOnly);
     }
@@ -135,7 +135,7 @@ class NewsController extends SQLListData
      */
     public function filter(array $keys)
     {
-        $newsList = new NewsListData($this->getWidget()->getData(), Database::getInstance());
+        $newsList = new NewsListData($this->getWidget(), Database::getInstance());
 
         return $newsList->filter($keys);
     }
