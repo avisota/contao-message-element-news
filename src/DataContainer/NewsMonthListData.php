@@ -21,6 +21,7 @@ use Avisota\Contao\Selectri\Model\Flat\SQLListSelectAbleNode;
 use Contao\BackendUser;
 use Contao\Database;
 use Contao\Widget;
+use ContaoCommunityAlliance\DcGeneral\DC_General;
 use Hofff\Contao\Selectri\Exception\SelectriException;
 use Hofff\Contao\Selectri\Model\AbstractData;
 use Hofff\Contao\Selectri\Model\Data;
@@ -167,7 +168,11 @@ class NewsMonthListData extends AbstractData
      */
     public function prepareMonthLabel(Node $node)
     {
-        return $GLOBALS['TL_LANG']['MONTHS'][$node->getData()['month'] - 1];
+        global $container;
+
+        $translator = $container['translator'];
+
+        return $translator->translate($node->getData()['month'] - 1, 'MONTHS');
     }
 
     /**
