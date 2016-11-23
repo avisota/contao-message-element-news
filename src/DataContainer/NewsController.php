@@ -19,7 +19,6 @@ use Avisota\Contao\Selectri\DataContainer\DatabaseTrait;
 use Avisota\Contao\Selectri\Widget;
 use Contao\Database;
 use Hofff\Contao\Selectri\Exception\SelectriException;
-use Hofff\Contao\Selectri\Model\AbstractData;
 use Hofff\Contao\Selectri\Model\Flat\SQLListData;
 use Hofff\Contao\Selectri\Model\Flat\SQLListDataConfig;
 use Iterator;
@@ -119,7 +118,7 @@ class NewsController extends SQLListData
      */
     public function getNodes(array $keys, $selectableOnly = true)
     {
-        $newsList = new NewsListData($this->getWidget()->getData(), Database::getInstance());
+        $newsList = new NewsListData($this->getWidget(), Database::getInstance());
 
         return $newsList->getNodes($keys, $selectableOnly);
     }
@@ -135,7 +134,7 @@ class NewsController extends SQLListData
      */
     public function filter(array $keys)
     {
-        $newsList = new NewsListData($this->getWidget()->getData(), Database::getInstance());
+        $newsList = new NewsListData($this->getWidget(), Database::getInstance());
 
         return $newsList->filter($keys);
     }
