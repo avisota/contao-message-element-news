@@ -21,15 +21,11 @@ use Avisota\Contao\Selectri\Model\Flat\SQLListSelectAbleNode;
 use Contao\BackendUser;
 use Contao\Database;
 use Contao\Widget;
-use ContaoCommunityAlliance\DcGeneral\DC_General;
 use Hofff\Contao\Selectri\Exception\SelectriException;
 use Hofff\Contao\Selectri\Model\AbstractData;
-use Hofff\Contao\Selectri\Model\Data;
 use Hofff\Contao\Selectri\Model\Flat\SQLListData;
 use Hofff\Contao\Selectri\Model\Node;
 use Hofff\Contao\Selectri\Util\Icons;
-use Hofff\Contao\Selectri\Util\SQLDataConfigTrait;
-use Hofff\Contao\Selectri\Util\SQLUtil;
 use Iterator;
 
 /**
