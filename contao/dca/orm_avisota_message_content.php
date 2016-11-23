@@ -25,15 +25,15 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['metapalettes']['news'] = arra
     'published' => array('invisible'),
 );
 
-$GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = array
+$GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId'] = array
 (
     'label'     => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsId'],
     'exclude'   => true,
     'inputType' => 'avisotaSelectriWithItems',
     'eval'      => array(
-        'min'  => 1,
-        'max'  => 99,
-        'data' => 'Avisota\Contao\Message\Element\News\DataContainer\NewsListDataFactory',
+        'min'       => 1,
+        'max'       => 99,
+        'data'      => 'Avisota\Contao\Message\Element\News\DataContainer\NewsListDataFactory',
         'canonical' => true
 
     ),
@@ -45,10 +45,10 @@ $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsId']       = ar
 
 $GLOBALS['TL_DCA']['orm_avisota_message_content']['fields']['newsTemplate'] = array
 (
-    'label'            => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsTemplate'],
-    'exclude'          => true,
-    'inputType'        => 'select',
-    'field'            => array(
+    'label'     => &$GLOBALS['TL_LANG']['orm_avisota_message_content']['newsTemplate'],
+    'exclude'   => true,
+    'inputType' => 'select',
+    'field'     => array(
         'type'     => 'string',
         'nullable' => true,
     ),
