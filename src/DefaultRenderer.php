@@ -78,7 +78,7 @@ class DefaultRenderer implements EventSubscriberInterface
         $entityAccessor = $container['doctrine.orm.entityAccessor'];
 
         $contexts = array();
-        foreach ($content->getNewsId() as $elementId) {
+        foreach (array_keys($content->getNewsId()) as $elementId) {
             $getNewsEvent = new GetNewsEvent(
                 $elementId,
                 $content->getNewsTemplate()
