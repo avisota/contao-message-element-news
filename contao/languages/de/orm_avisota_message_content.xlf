@@ -4,22 +4,27 @@
       <trans-unit id="orm_avisota_message_content.newsId.0">
         <source>News</source>
         <target>Nachricht</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_message_content.newsId.1">
         <source>Please choose the news to include.</source>
         <target>Bitte wählen Sie die einzubindende Nachrichten aus-</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_message_content.newsTemplate.0">
         <source>Template</source>
         <target>Template</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_message_content.newsTemplate.1">
         <source>Please choose the news template.</source>
         <target>Bitte wählen Sie das Template für die Nachrichtendarstellung aus.</target>
-        
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_message_content.news.saveBeforeSelect">
+        <source>You must save this message content, before you can select news.</source>
+        <target>Dieses Inhaltselement muss zuvor gespeichert werden, bevor man eine Nachricht auswählen kann.</target>
+
       </trans-unit>
     </body>
   </file>
