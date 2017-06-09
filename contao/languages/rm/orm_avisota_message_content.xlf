@@ -4,22 +4,26 @@
       <trans-unit id="orm_avisota_message_content.newsId.0">
         <source>News</source>
         <target>Novitads</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_message_content.newsId.1">
         <source>Please choose the news to include.</source>
         <target>Tscherna las novitads per includer.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_message_content.newsTemplate.0">
         <source>Template</source>
         <target>Template</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_message_content.newsTemplate.1">
         <source>Please choose the news template.</source>
         <target>Tscherna il template per las novitads.</target>
-        
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_message_content.news.saveBeforeSelect">
+        <source>You must save this message content, before you can select news.</source>
+
       </trans-unit>
     </body>
   </file>
